@@ -1,7 +1,7 @@
 package main
 
 
-import "gopkg.in/xkg.v0"
+import "github.com/LuccaPrado/xkg"
 import "io/ioutil"
 
 
